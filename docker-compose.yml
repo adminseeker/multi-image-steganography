@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+    backend:
+        image: ubuntu
+        ports:
+            - 8082:5000
+
+
+    frontend:
+        image: nginx:mainline
+        restart: always
+        ports: 
+            - 8081:80
+        volumes:
+            - ./templates:/etc/nginx/templates
+            - ./frontend/build:/usr/share/app:ro
+        links:
+            - backend     

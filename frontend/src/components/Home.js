@@ -11,6 +11,10 @@ const Home = () => {
       <br />
       <br />
       <br />
+      <br />
+      <h3 style={{textAlign:"center"}}>Upload One Container Image and Maximum Three Secret Images</h3>
+      <br />
+      <br />
       <div>
         <Upload />
       </div>
