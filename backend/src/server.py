@@ -20,14 +20,15 @@ def upload():
     if request.method=="POST":
         fid=str(uuid())
         os.mkdir('./inputs/'+fid)
-        f = request.files['image1']
-        f.save("./inputs/"+fid+"/input1.jpeg")
-        f = request.files['image2']
-        f.save("./inputs/"+fid+"/input2.jpeg")
-        f = request.files['image3']
-        f.save("./inputs/"+fid+"/input3.jpeg")
-        f = request.files['image4']
-        f.save("./inputs/"+fid+"/container.jpeg")
+        f = request.get_json()
+        with open("./inputs/"+fid+"/container.jpeg", "wb") as fh:
+            fh.write(f['container'].decode('base64'))
+        with open("./inputs/"+fid+"/input1.jpeg", "wb") as fh:
+            fh.write(f['input1'].decode('base64'))
+        with open("./inputs/"+fid+"/input2.jpeg", "wb") as fh:
+            fh.write(f['input2'].decode('base64'))
+        with open("./inputs/"+fid+"/input3.jpeg", "wb") as fh:
+            fh.write(f['input3'].decode('base64'))
         script.main(fid)
         return {"msg": "Uploaded images successfully!!!","fid":fid }
 
