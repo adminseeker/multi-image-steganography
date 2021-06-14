@@ -27,11 +27,11 @@ const theme = createMuiTheme({
   overrides: {
     MuiDropzoneSnackbar: {
       errorAlert: {
-        backgroundColor: "#AFA",
+        backgroundColor: "#FAA",
         color: "#000"
       },
       successAlert: {
-        backgroundColor: "#FAA",
+        backgroundColor: "#AFA",
         color: "#000"
       },
      
@@ -91,7 +91,7 @@ const Upload = () => {
           "Content-Type": "application/json",
         },
       };
-      const res = await axios.post("/upload", data, config);
+      const res = await axios.post("/api/upload", data, config);
       const cookies = new Cookies();
       cookies.set("fid", res.data.fid);
       setResultsButtons(true);
@@ -155,7 +155,7 @@ const Upload = () => {
         },
       };
       let data = { fid };
-      let res = await axios.post("/encode", data, config);
+      let res = await axios.post("/api/encode", data, config);
       setEncodeRes({
         ...encodeRes,
         original: res.data.original,
@@ -191,7 +191,7 @@ const Upload = () => {
       if (imgCount==1) setGridSpace(6);
       if (imgCount==2) setGridSpace(3);
       if (imgCount==3) setGridSpace(2);
-      let res = await axios.post("/decode", data, config);
+      let res = await axios.post("/api/decode", data, config);
       setDecodeRes({
         ...decodeRes,
         decoded1: res.data.decoded1,

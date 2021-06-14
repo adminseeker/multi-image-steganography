@@ -2,18 +2,27 @@ version: "3"
 
 services:
     backend:
-        image: ubuntu
+        container_name: backend
+        build:
+            context: ./backend
+            dockerfile: ./Dockerfile
+        image: adminseeker/multi-image-steganography-backend
+        networks: 
+            web:
         ports:
-            - 8082:5000
-
-
+            - 5000:5000
     frontend:
-        image: nginx:mainline
-        restart: always
+        container_name: frontend
+        build:
+            context: ./frontend
+            dockerfile: ./Dockerfile
+        image: adminseeker/multi-image-steganography-frontend
+        networks: 
+            web:
         ports: 
             - 8081:80
-        volumes:
-            - ./templates:/etc/nginx/templates
-            - ./frontend/build:/usr/share/app:ro
         links:
             - backend     
+
+networks: 
+    web:

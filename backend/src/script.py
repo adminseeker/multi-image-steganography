@@ -11,9 +11,6 @@ import os
 from PIL import Image
 
 ### Constants ###
-DATA_DIR = "../data"
-TRAIN_DIR = os.path.join(DATA_DIR, "train")
-TEST_DIR = os.path.join(DATA_DIR, "test")
 
 IMG_SHAPE = (64, 64)
 
