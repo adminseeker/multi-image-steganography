@@ -3,9 +3,6 @@ version: "3"
 services:
     backend:
         container_name: backend
-        build:
-            context: ./backend
-            dockerfile: ./Dockerfile
         image: adminseeker/multi-image-steganography-backend
         networks: 
             web:
@@ -13,9 +10,6 @@ services:
             - 5000:5000
     frontend:
         container_name: frontend
-        build:
-            context: ./frontend
-            dockerfile: ./Dockerfile
         image: adminseeker/multi-image-steganography-frontend
         networks: 
             web:
